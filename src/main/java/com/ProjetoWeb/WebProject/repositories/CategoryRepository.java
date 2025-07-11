@@ -5,6 +5,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.ProjetoWeb.WebProject.entities.Category;
 import com.ProjetoWeb.WebProject.entities.User;
 
-public interface UserRepository extends JpaRepository<User, Integer> {
+public interface CategoryRepository extends JpaRepository<Category, Integer> {
 
 }
