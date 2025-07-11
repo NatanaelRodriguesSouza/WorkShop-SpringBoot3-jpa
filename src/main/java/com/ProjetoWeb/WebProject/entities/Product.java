@@ -1,9 +1,7 @@
 package com.ProjetoWeb.WebProject.entities;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
@@ -11,7 +9,11 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
+
 @Entity
 @Table(name = "tb_Product")
 public class Product implements Serializable{
@@ -24,6 +26,12 @@ public class Product implements Serializable{
     private Double price;
     private String imgUrl;
     
+    @ManyToMany
+    @JoinTable(
+        name = "tb_product_category", // nome da tabela intermediária
+        joinColumns = @JoinColumn(name = "product_id"), // chave estrangeira para esta entidade (Product)
+        inverseJoinColumns = @JoinColumn(name = "category_id") // chave estrangeira para a outra entidade (Category)
+    )
     private Set<Category> category = new HashSet<>();
     
     public Product() {}
