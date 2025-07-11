@@ -10,7 +10,6 @@ import com.ProjetoWeb.WebProject.entities.User;
 @RestController
 @RequestMapping(value = "/users")
 public class UserResource {
-	
 	@GetMapping
 	public ResponseEntity<User> findAll(){
 		User u = new User(1,"Maria","maria@gmail.com","99999","00000");
