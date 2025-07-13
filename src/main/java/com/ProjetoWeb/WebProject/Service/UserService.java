@@ -14,6 +14,8 @@ import com.ProjetoWeb.WebProject.Service.exceptions.ResourceNotFoundException;
 import com.ProjetoWeb.WebProject.entities.User;
 import com.ProjetoWeb.WebProject.repositories.UserRepository;
 import com.ProjetoWeb.WebProject.resource.exceptions.ResourceExceptionHandler;
+
+import jakarta.persistence.EntityNotFoundException;
 @Service
 public class UserService {
 
@@ -48,8 +50,7 @@ public class UserService {
 		User entity = repository.getReferenceById(id);
 		updateData(entity,obj);
 		return repository.save(entity);
-		}catch(RuntimeException e) {
-			e.printStackTrace();
+		}catch(EntityNotFoundException e) {
 			throw new ResourceNotFoundException(id);
 		}
 	}
